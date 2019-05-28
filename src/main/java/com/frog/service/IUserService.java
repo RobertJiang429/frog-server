@@ -4,7 +4,7 @@ import com.frog.model.User;
 import com.frog.model.dto.PageDto;
 
 /**
- * 
+ * 定义用户模块的接口
  * @author Robert.Jiang
  * @date 2019年5月21日 下午6:13:53
  */
