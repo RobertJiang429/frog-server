@@ -1,0 +1,46 @@
+#定义服务端口
+server:
+  port: 8090
+
+spring:
+  #定义数据源以及连接池等
+  datasource:
+    name: testing-platform
+    #url: jdbc:mysql://47.106.204.218:3306/frog?characterEncoding=utf8&useSSL=true
+    #username: root
+    #password: Adril.;429
+    #    local-db
+    url: jdbc:mysql://localhost:3306/frog?characterEncoding=utf8&useSSL=true
+    username: root
+    password: 123456
+    # 使用druid数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  http:
+    multipart:
+        enabled: false
+
+#集成mybatis
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.frog.model
+
+logging:
+  level:
+#    root: debug

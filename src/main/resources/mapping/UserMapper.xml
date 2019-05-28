@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.frog.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.frog.model.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="user_role" jdbcType="INTEGER" property="userRole" />
+    <result column="user_status" jdbcType="INTEGER" property="userStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, user_password, user_role, user_status
+  </sql>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByUserId" parameterType="java.lang.Integer">
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.frog.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="user_name != null" >
+        user_name,
+      </if>
+      <if test="user_password != null" >
+        user_password,
+      </if>
+      <if test="user_role != null" >
+        user_role,
+      </if>
+      <if test="user_status != null" >
+        user_status
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null" >
+        #{userRole,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByFuzzyColumn" resultMap="BaseResultMap" parameterType="com.frog.model.User" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    <where>
+      1 = 1
+      <if test="userName != null and userName != ''" >
+        and user_name LIKE CONCAT('%',#{userName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="userRole != null" >
+        and user_role = #{userRole,jdbcType=INTEGER}
+      </if>
+      <if test="status != null" >
+        and user_status = #{userStatus,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectByUser" resultMap="BaseResultMap" parameterType="com.frog.model.User" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    <where>
+      1 = 1
+      <if test="userName != null and userName != ''" >
+        and user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="userPassword != null and userPassword != ''">
+        and user_password = #{userPassword,jdbcType=VARCHAR}
+      </if>
+      <if test="userRole != null" >
+        and user_role = #{userRole,jdbcType=INTEGER}
+      </if>
+      <if test="userStatus != null" >
+        and user_status = #{userStatus,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <update id="updateByUserId" parameterType="com.frog.model.User">
+    update user
+    <set>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        user_role = #{userRole,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null">
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
