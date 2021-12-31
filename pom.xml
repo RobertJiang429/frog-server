@@ -70,7 +70,7 @@
 		<dependency>
 			<groupId>com.googlecode.aviator</groupId>
 			<artifactId>aviator</artifactId>
-			<version>3.3.0</version>
+			<version>5.2.7</version>
 		</dependency>
 		<!--Mapper -->
 		<dependency>
