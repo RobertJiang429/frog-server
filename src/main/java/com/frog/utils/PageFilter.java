@@ -29,7 +29,7 @@ public class PageFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) {
-//		logger.info("PageFilter initialized successfully");
+		logger.info("PageFilter initialized successfully");
 	}
 
 	@Override
