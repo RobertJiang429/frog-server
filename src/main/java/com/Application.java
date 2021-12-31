@@ -12,7 +12,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan("com.jiangxing.mapper")
+@MapperScan("com.frog.mapper")
 public class Application {
 	public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

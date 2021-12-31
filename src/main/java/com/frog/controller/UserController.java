@@ -37,8 +37,8 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user/saveUser", method = RequestMethod.POST)
-    public UnifiedResponse<String> saveUser(@RequestBody User user){
+    @RequestMapping(value = "/user/addUser", method = RequestMethod.POST)
+    public UnifiedResponse<String> addUser(@RequestBody User user){
         try{
             userService.addUser(user);
             return new UnifiedResponse<>(UnifiedCode.OK.getCode(), "新增用户成功！", null);
@@ -59,7 +59,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user/deleteServer", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/deleteUser", method = RequestMethod.POST)
     public UnifiedResponse<String> deleteUser(@RequestBody Integer userId){
         try {
             userService.deleteUser(userId);
@@ -70,8 +70,8 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user/queryUser", method = RequestMethod.POST)
-    public UnifiedResponse<PageDto<User>> queryUser(@RequestBody User user){
+    @RequestMapping(value = "/user/getUser", method = RequestMethod.POST)
+    public UnifiedResponse<PageDto<User>> getUser(@RequestBody User user){
         PageHelper.startPage(PageContext.getPageIndex(), PageContext.getPageSize());
         try {
         	PageDto<User> page = userService.getUser(user);

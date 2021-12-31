@@ -28,8 +28,8 @@ public class PageFilter implements Filter {
 	private final static Logger logger = LoggerFactory.getLogger(PageFilter.class);
 
 	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		logger.info("分页查询过滤器初始化......");
+	public void init(FilterConfig filterConfig) {
+//		logger.info("PageFilter initialized successfully");
 	}
 
 	@Override
@@ -57,32 +57,6 @@ public class PageFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		logger.info("分页过滤结束.....");
+//		logger.info("PageFilter destroyed successfully");
 	}
-
-	class IndexSize {
-		private Integer index;
-		private Integer size;
-
-		public IndexSize() {
-
-		}
-
-		public Integer getIndex() {
-			return index;
-		}
-
-		public void setIndex(Integer index) {
-			this.index = index;
-		}
-
-		public Integer getSize() {
-			return size;
-		}
-
-		public void setSize(Integer size) {
-			this.size = size;
-		}
-	}
-
 }

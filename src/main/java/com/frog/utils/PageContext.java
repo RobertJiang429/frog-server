@@ -9,6 +9,10 @@ public class PageContext {
     private static ThreadLocal<Integer> pageSize = new ThreadLocal<>();
     private static ThreadLocal<Integer> pageIndex = new ThreadLocal<>();
 
+    public static void setPageSize(int requestPageSize){
+        pageSize.set(requestPageSize);
+    }
+
     public static int getPageSize(){
         if(pageSize.get() == null) {
             return 10;
@@ -18,8 +22,8 @@ public class PageContext {
         }
     }
 
-    public static void setPageSize(int requestPageSize){
-        pageSize.set(requestPageSize);
+    public static void setPageIndex(int requestPageIndex){
+        pageIndex.set(requestPageIndex);
     }
 
     public static int getPageIndex(){
@@ -28,9 +32,5 @@ public class PageContext {
         } else {
             return pageIndex.get();
         }
-    }
-
-    public static void setPageIndex(int requestPageIndex){
-        pageIndex.set(requestPageIndex);
     }
 }
